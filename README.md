@@ -14,7 +14,7 @@
   </a>
 </p>
 
-![github contribution grid snake animation](https://raw.githubusercontent.com/MayBeeGG/MayBeeGG/output/github-contribution-grid-snake-dark.svg)
+![snake gif](https://github.com/YOUR_USERNAME/YOUR_USERNAME/blob/output/github-contribution-grid-snake.svg)
 
 ###
 
