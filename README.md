@@ -91,6 +91,8 @@
   <img width="10" />
   <img src="https://img.shields.io/badge/Adobe Photoshop-31A8FF?logo=adobephotoshop&logoColor=black&style=for-the-badge" height="40" alt="photoshop logo"  />
   <img width="10" />
+    <img src="https://img.shields.io/badge/Premier%20Pro-31A8FF?logo=adobephotoshop&logoColor=black&style=for-the-badge"%20height="40"%20alt="photoshop%20logo"  />
+  <img width="10" />
   <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?logo=visualstudiocode&logoColor=white&style=for-the-badge" height="40" alt="vscode logo"  />
   <img width="10" />
   <img src="https://img.shields.io/badge/Windows-0078D6?logo=windows&logoColor=white&style=for-the-badge" height="40" alt="windows8 logo"  />
