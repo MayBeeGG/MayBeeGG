@@ -84,7 +84,7 @@
   <img width="10" />
   <img src="https://img.shields.io/badge/Adobe Photoshop-31A8FF?logo=adobephotoshop&logoColor=black&style=for-the-badge" height="40" alt="photoshop logo"  />
   <img width="10" />
-    <img src="https://img.shields.io/badge/Adobe Premier Pro-31A8FF?logo=adobepremierpro&logoColor=black&style=for-the-badge" height="40"%20alt="premier pro logo"  />
+    <img src="https://img.shields.io/badge/Adobe Premiere Pro-31A8FF?logo=adobepremierepro&logoColor=black&style=for-the-badge" height="40"%20alt="premiere pro logo"  />
   <img width="10" />
   <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?logo=visualstudiocode&logoColor=white&style=for-the-badge" height="40" alt="vscode logo"  />
   <img width="10" />
