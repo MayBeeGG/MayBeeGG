@@ -14,7 +14,7 @@
   </a>
 </p>
 
-![snake gif](https://github.com/MayBeeGG/MayBeeGG/output/github-contribution-grid-snake-dark.svg)
+![snake gif](https://github.com/MayBeeGG/MayBeeGG/blob/output/github-snake-dark.svg)
 
 ###
 
