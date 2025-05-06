@@ -19,14 +19,11 @@
 
 ###
 
-<h1 align="left">🔥Stats</h1>
+### 🔥 Stats
 
-###
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MayBeeGG&theme=tokyonight&show_icons=true&hide_border=false&count_private=true)
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=MayBeeGG&theme=tokyonight&hide_border=false)
 
-<div>
-  <img src="https://github-readme-stats.vercel.app/api?username=MayBeeGG&theme=tokyonight&show_icons=true&hide_border=false&count_private=true" height="150" alt="streak graph"  />
-   ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=MayBeeGG&theme=tokyonight&hide_border=false)
-</div>
 
 ### ⚙️ Tech Stack
 
