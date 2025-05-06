@@ -29,6 +29,7 @@ jobs:
           palette: "1a1b27,70a5fd,7aa2f7,c0caf5,a9b1d6"
 
 
+
       - name: Push Generated SVG to Output Branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
