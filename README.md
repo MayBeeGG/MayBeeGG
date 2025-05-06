@@ -28,70 +28,86 @@
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=MayBeeGG&theme=tokyonight&hide_border=false" height="150" alt="streak graph"  />
 </div>
 
-###
+### ⚙️ Tech Stack
 
-<h2 align="left">🚀 Tech Stack</h2>
-
-###
-
-<h3 align="left">Languages</h3>
-
-###
-
+#### 🧠 Languages
 <div align="left">
-  <img src="https://img.shields.io/badge/JavaScript-1a1b27?style=for-the-badge&logo=javascript&logoColor=70a5fd" height="40" alt="Java Script"  />
-  <img src="https://img.shields.io/badge/Python-1a1b27?style=for-the-badge&logo=python&logoColor=70a5fd" height="40" alt="python logo"  />
+  <img src="https://img.shields.io/badge/JavaScript-1a1b27?style=for-the-badge&logo=javascript&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Python-1a1b27?style=for-the-badge&logo=python&logoColor=70a5fd"/>
 </div>
 
-###
-
-<h3 align="left">Technologies & Frameworks</h3>
-
-###
-
+#### 🧱 Frameworks & Libraries
 <div align="left">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=for-the-badge" height="40" alt="html5 logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white&style=for-the-badge" height="40" alt="nodejs logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black&style=for-the-badge" height="40" alt="react logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white&style=for-the-badge" height="40" alt="css3 logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white&style=for-the-badge" height="40" alt="bootstrap logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white&style=for-the-badge" height="40" alt="nextjs logo"  />
+  <img src="https://img.shields.io/badge/Node.js-1a1b27?style=for-the-badge&logo=nodedotjs&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/React-1a1b27?style=for-the-badge&logo=react&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Next.js-1a1b27?style=for-the-badge&logo=nextdotjs&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/axios-1a1b27?style=for-the-badge&logo=axios&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Django-1a1b27?style=for-the-badge&logo=django&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/FastAPI-1a1b27?style=for-the-badge&logo=fastapi&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Prisma-1a1b27?style=for-the-badge&logo=prisma&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/shadcn/ui-1a1b27?style=for-the-badge&logo=shadcnui&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-1a1b27?style=for-the-badge&logo=tailwind-css&logoColor=70a5fd"/>
 </div>
 
-###
-
-<h3 align="left">DevOps & Tools</h3>
-
-###
-
+#### 🗃️ Databases
 <div align="left">
-  <img src="https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white&style=for-the-badge" height="40" alt="npm logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white&style=for-the-badge" height="40" alt="git logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/GitLab-FC6D26?logo=gitlab&logoColor=black&style=for-the-badge" height="40" alt="gitlab logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Adobe Illustrator-FF9A00?logo=adobeillustrator&logoColor=black&style=for-the-badge" height="40" alt="illustrator logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black&style=for-the-badge" height="40" alt="linux logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Arduino-00979D?logo=arduino&logoColor=white&style=for-the-badge" height="40" alt="arduino logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Adobe Photoshop-31A8FF?logo=adobephotoshop&logoColor=black&style=for-the-badge" height="40" alt="photoshop logo"  />
-  <img width="10" />
-    <img src="https://img.shields.io/badge/Adobe Premiere Pro-31A8FF?logo=adobepremierepro&logoColor=black&style=for-the-badge" height="40"%20alt="premiere pro logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?logo=visualstudiocode&logoColor=white&style=for-the-badge" height="40" alt="vscode logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Windows-0078D6?logo=windows&logoColor=white&style=for-the-badge" height="40" alt="windows8 logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=for-the-badge" height="40" alt="github logo"  />
-  <img width="10" />
-  <img src="https://img.shields.io/badge/Markdown-000000?logo=markdown&logoColor=white&style=for-the-badge" height="40" alt="markdown logo"  />
+  <img src="https://img.shields.io/badge/MySQL-1a1b27?style=for-the-badge&logo=mysql&logoColor=70a5fd"/>
 </div>
 
+#### 🎨 Design Tools
+<div align="left">
+  <img src="https://img.shields.io/badge/Adobe_Illustrator-1a1b27?style=for-the-badge&logo=adobe%20illustrator&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Adobe_Photoshop-1a1b27?style=for-the-badge&logo=Adobe%20Photoshop&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Adobe_Premiere_Pro-1a1b27?style=for-the-badge&logo=Adobe%20Premiere%20Pro&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Figma-1a1b27?style=for-the-badge&logo=figma&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Obsidian-1a1b27?style=for-the-badge&logo=Obsidian&logoColor=70a5fd"/>
+</div>
+
+#### ⚙️ DevOps & Tools
+<div align="left">
+  <img src="https://img.shields.io/badge/GitHub_Actions-1a1b27?style=for-the-badge&logo=github-actions&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Docker-1a1b27?style=for-the-badge&logo=docker&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Docker_Compose-1a1b27?style=for-the-badge&logo=docker&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Git-1a1b27?style=for-the-badge&logo=git&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/GitHub-1a1b27?style=for-the-badge&logo=github&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/GitLab-1a1b27?style=for-the-badge&logo=gitlab&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/npm-1a1b27?style=for-the-badge&logo=npm&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/prettier-1a1b27?style=for-the-badge&logo=prettier&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Markdown-1a1b27?style=for-the-badge&logo=markdown&logoColor=70a5fd"/>
+</div>
+
+#### 💻 IDEs & Editors
+<div align="left">
+  <img src="https://img.shields.io/badge/NeoVim-1a1b27?style=for-the-badge&logo=neovim&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/VSCode-1a1b27?style=for-the-badge&logo=visual%20studio%20code&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/alacritty-1a1b27?style=for-the-badge&logo=alacritty&logoColor=70a5fd"/>
+</div>
+
+#### 🧪 Cybersecurity & Networking
+<div align="left">
+  <img src="https://img.shields.io/badge/CISCO-1a1b27?style=for-the-badge&logo=cisco&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Wireshark-1a1b27?style=for-the-badge&logo=Wireshark&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/burpsuite-1a1b27?style=for-the-badge&logo=burpsuite&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/metasploit-1a1b27?style=for-the-badge&logo=metasploit&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/HackTheBox-1a1b27?style=for-the-badge&logo=Hack%20The%20Box&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/TryHackMe-1a1b27?style=for-the-badge&logo=TryHackMe&logoColor=70a5fd"/>
+</div>
+
+#### 💻 Operating Systems
+<div align="left">
+  <img src="https://img.shields.io/badge/Arch_Linux-1a1b27?style=for-the-badge&logo=arch-linux&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Kali_Linux-1a1b27?style=for-the-badge&logo=kali-linux&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Ubuntu-1a1b27?style=for-the-badge&logo=ubuntu&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Red_Hat-1a1b27?style=for-the-badge&logo=redhat&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Windows_11-1a1b27?style=for-the-badge&logo=windows-11&logoColor=70a5fd"/>
+</div>
+
+#### 🧩 Others
+<div align="left">
+  <img src="https://img.shields.io/badge/Raspberry_Pi-1a1b27?style=for-the-badge&logo=Raspberry%20Pi&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Arduino-1a1b27?style=for-the-badge&logo=arduino&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/VMware-1a1b27?style=for-the-badge&logo=VMware&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Spotify-1a1b27?style=for-the-badge&logo=spotify&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Brave-1a1b27?style=for-the-badge&logo=Brave&logoColor=70a5fd"/>
+  <img src="https://img.shields.io/badge/Duolingo-1a1b27?style=for-the-badge&logo=Duolingo&logoColor=70a5fd"/>
+</div>
