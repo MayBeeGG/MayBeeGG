@@ -14,6 +14,15 @@ jobs:
       - name: Setup directories
         run: mkdir -p dist
 
+      - name: Debug Before Generation
+        run: |
+          echo "Working directory before generation:"
+          pwd
+          echo "Contents of working directory before generation:"
+          ls -R
+          echo "Contents of dist directory before generation:"
+          ls -R dist || echo "dist directory not found"
+
       - name: Generate Light Snake
         uses: Platane/snk@v3
         with:
@@ -26,8 +35,23 @@ jobs:
             --color-line d5d6db
             --no-progress
 
-      - name: Debug Generate Light Snake
-        run: cat dist/snake.svg || echo "dist/snake.svg not created"
+      - name: Debug After Generation
+        run: |
+          echo "Working directory after generation:"
+          pwd
+          echo "Contents of working directory after generation:"
+          ls -R
+          echo "Contents of dist directory after generation:"
+          ls -R dist || echo "dist directory not found"
+
+      - name: Debug File Content
+        run: |
+          if [ -f dist/snake.svg ]; then
+            echo "Contents of dist/snake.svg:"
+            cat dist/snake.svg
+          else
+            echo "ERROR: dist/snake.svg not created"
+          fi
 
       - name: Ensure light SVG
         run: |
@@ -39,7 +63,7 @@ jobs:
       - name: List dist contents
         run: ls -alh dist
 
-      # 7) Deploy to GitHub Pages
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
