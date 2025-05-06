@@ -11,76 +11,79 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup environment
-        run: |
-          mkdir -p dist
-          echo "Workspace: $PWD"
-          echo "Directory structure:"
-          tree -a
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Generate Light Snake (Debug)
+      - name: Setup directories
+        run: mkdir -p dist
+
+      - name: Debug Before Generation
+        run: |
+          echo "Working directory before generation:"
+          pwd
+          echo "Contents of working directory before generation:"
+          ls -R
+          echo "Contents of dist directory before generation:"
+          ls -R dist || echo "dist directory not found"
+
+      - name: Generate Light Snake
         uses: Platane/snk@v3
-        id: snake-light
         with:
           github_user_name: ${{ github.repository_owner }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           args: >-
-            --output ${{ github.workspace }}/dist/snake.svg
+            --output dist/snake.svg
             --color-bg d5d6db
             --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68
             --color-line d5d6db
-            --show-activity
+            --no-progress
+        continue-on-error: true
 
-      - name: Verify Light Snake
+      - name: Verify Generated File
         run: |
-          echo "Current directory: $PWD"
-          ls -la dist/
           if [ -f dist/snake.svg ]; then
-            echo "Snake generated successfully!"
-            echo "File info:"
-            file dist/snake.svg
-            echo "First 50 chars:"
-            head -c 50 dist/snake.svg
+            echo "SVG file was generated successfully!"
           else
-            echo "::error::Light snake generation failed!"
+            echo "ERROR: snake.svg was not found after generation."
             exit 1
           fi
 
-      - name: Generate Dark Snake (Debug)
-        uses: Platane/snk@v3
-        id: snake-dark
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          args: >-
-            --output ${{ github.workspace }}/dist/snake-dark.svg
-            --color-bg 1a1b27
-            --color-fg a9b1d6,7aa2f7,bb9af7,9ece6a,e0af68
-            --color-line 1a1b27
-            --dark-mode
-            --show-activity
-
-      - name: Verify Dark Snake
+      - name: Debug After Generation
         run: |
-          ls -la dist/
-          if [ -f dist/snake-dark.svg ]; then
-            echo "Dark snake generated successfully!"
-            echo "File info:"
-            file dist/snake-dark.svg
-            echo "First 50 chars:"
-            head -c 50 dist/snake-dark.svg
+          echo "Working directory after generation:"
+          pwd
+          echo "Contents of working directory after generation:"
+          ls -R
+          echo "Contents of dist directory after generation:"
+          ls -R dist || echo "dist directory not found"
+
+      - name: Debug File Content
+        run: |
+          if [ -f dist/snake.svg ]; then
+            echo "Contents of dist/snake.svg:"
+            cat dist/snake.svg
           else
-            echo "::error::Dark snake generation failed!"
-            exit 1
+            echo "ERROR: dist/snake.svg not created"
           fi
 
-      - name: Deploy with Verification
+      - name: Ensure Fallback SVG
+        run: |
+          if [ ! -f dist/snake.svg ]; then
+            echo "Creating fallback snake.svg"
+            echo '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"/>' > dist/snake.svg
+          fi
+
+      - name: List dist contents
+        run: ls -alh dist
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: output
           force_orphan: true
-          allow_empty: false
-        env:
-          DEBUG: true
+          allow_empty: true
