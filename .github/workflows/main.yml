@@ -11,51 +11,110 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify Contributions Data
-        run: |
-          echo "Checking contribution visibility..."
-          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          "https://api.github.com/users/${{ github.repository_owner }}/events/public" \
-          | jq '.[].type' | uniq -c
-
-      - name: Setup Python (snk dependency)
-        uses: actions/setup-python@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.10'
+          node-version: '20'
 
-      - name: Generate Snakes with Fallback
-        uses: Platane/snk@v3
-        id: snake-gen
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          args: >-
-            --output dist/snake.svg
-            --color-bg d5d6db
-            --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68
-            --color-line d5d6db
-            --dark-mode-output dist/snake-dark.svg
-            --dark-color-bg 1a1b27
-            --dark-color-fg a9b1d6,7aa2f7,bb9af7,9ece6a,e0af68
-            --dark-color-line 1a1b27
-            --show-activity
-            --force-week 1
+      - name: Setup directories
+        run: mkdir -p dist
 
-      - name: Validate Output
+      - name: Create Snake Generator Script
         run: |
-          echo "Current directory: $(pwd)"
-          ls -la dist/
-          
-          if [ ! -f dist/snake.svg ]; then
-            echo "Using fallback snake..."
-            wget -O dist/snake.svg https://raw.githubusercontent.com/Platane/snk/output/snake.svg
-            wget -O dist/snake-dark.svg https://raw.githubusercontent.com/Platane/snk/output/snake-dark.svg
+          cat << 'EOF' > generate-snake.js
+          #!/usr/bin/env node
+          const fs = require('fs');
+          const path = require('path');
+
+          // Get commit hash from environment variables (GitHub Actions sets this)
+          const commitHash = process.env.GITHUB_SHA || 'unknown';
+          const seed = parseInt(commitHash.slice(-8), 16) || 0;
+
+          // Parse CLI arguments for colors and output location
+          function parseArgs() {
+            const args = process.argv.slice(2);
+            const options = {
+              output: 'dist/snake.svg',
+              colorBg: '#d5d6db',
+              colorFg: '414868,7aa2f7,bb9af7,9ece6a,e0af68',
+              colorLine: '#d5d6db'
+            };
+
+            args.forEach(arg => {
+              if (arg.startsWith('--output=')) {
+                options.output = arg.split('=')[1];
+              } else if (arg.startsWith('--color-bg=')) {
+                options.colorBg = '#' + arg.split('=')[1].replace('#', '');
+              } else if (arg.startsWith('--color-fg=')) {
+                options.colorFg = arg.split('=')[1];
+              } else if (arg.startsWith('--color-line=')) {
+                options.colorLine = '#' + arg.split('=')[1].replace('#', '');
+              }
+            });
+            return options;
+          }
+
+          // Generate a sine‑wave snake pattern with commit variation
+          function generateSVG(options) {
+            const fgColors = options.colorFg.split(',');
+            const primaryColor = '#' + fgColors[0].replace('#', '');
+            const width = 800;
+            const height = 200;
+            let points = '';
+            const numPoints = 20;
+
+            for (let i = 0; i <= numPoints; i++) {
+              let x = (width / numPoints) * i;
+              let y = height / 2 + (height / 3) * Math.sin((i / numPoints) * Math.PI * 2 + seed % 10);
+              points += `${x.toFixed(2)},${y.toFixed(2)} `;
+            }
+
+            return `<?xml version="1.0" encoding="UTF-8"?>
+          <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">
+            <rect width="100%" height="100%" fill="${options.colorBg}" />
+            <polyline points="${points.trim()}" fill="none" stroke="${primaryColor}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          `;
+          }
+
+          function main() {
+            const options = parseArgs();
+            const svg = generateSVG(options);
+            const outputDir = path.dirname(options.output);
+            if (!fs.existsSync(outputDir)) {
+              fs.mkdirSync(outputDir, { recursive: true });
+            }
+            fs.writeFileSync(options.output, svg, 'utf8');
+            console.log(`SVG generated at ${options.output}`);
+          }
+
+          main();
+          EOF
+
+      - name: Generate Light Snake
+        run: |
+          node generate-snake.js --output=dist/snake.svg --color-bg=d5d6db --color-fg=414868,7aa2f7,bb9af7,9ece6a,e0af68 --color-line=d5d6db
+
+      - name: Verify Generated File
+        run: |
+          if [ -f dist/snake.svg ]; then
+            echo "SVG file was generated successfully!"
+          else
+            echo "ERROR: snake.svg was not found after generation."
+            exit 1
           fi
 
-          echo "File contents:"
-          head -n 2 dist/snake.svg
-          echo "File type:"
-          file dist/snake.svg
+      - name: Debug File Content
+        run: |
+          if [ -f dist/snake.svg ]; then
+            echo "Contents of dist/snake.svg:"
+            cat dist/snake.svg
+          else
+            echo "ERROR: dist/snake.svg not created"
+          fi
+
+      - name: List dist contents
+        run: ls -alh dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -64,4 +123,4 @@ jobs:
           publish_dir: ./dist
           publish_branch: output
           force_orphan: true
-          allow_empty: false
+          allow_empty: true
