@@ -12,49 +12,34 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Ensure dist directory exists
-        run: mkdir -p dist
+      - uses: actions/checkout@v4
 
       - name: Generate Light-mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-        # all extra flags go under args
-          args: |
-            --mode light
-            --palette 1a1b27,70a5fd,7aa2f7,c0caf5,a9b1d6
+          mode: light
+          # Updated Tokyo Night palette (no background color)
+          palette: "414868,7aa2f7,bb9af7,9ece6a,e0af68"
+          output: dist/snake-light.svg
 
       - name: Generate Dark-mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-contribution-grid-snake-dark.svg
-          args: |
-            --mode dark
-            --palette 1a1b27,70a5fd,7aa2f7,c0caf5,a9b1d6
-
-      - name: 📂 Debug
-        run: |
-          echo "Contents of dist/:"
-          ls -l dist
+          mode: dark
+          # Same Tokyo Night palette for dark mode
+          palette: "414868,7aa2f7,bb9af7,9ece6a,e0af68"
+          output: dist/snake-dark.svg
 
       - name: Apply Tokyo Night grid background
-        if: ${{ always() }}
         run: |
-          BG="#1a1b27"
-          for f in dist/*.svg; do
-            echo "Patching $f"
-            sed -i "s/fill=\"#ebedf0\"/fill=\"${BG}\"/g" "$f" || true
-            sed -i "s/fill=\"#161b22\"/fill=\"${BG}\"/g" "$f" || true
+          BG="#1a1b27"    # Tokyo Night background
+          for f in dist/snake-*.svg; do
+            # Replace grid colors
+            sed -i "s/fill=\"#ebedf0\"/fill=\"${BG}\"/g" "$f"
+            sed -i "s/fill=\"#161b22\"/fill=\"${BG}\"/g" "$f"
           done
-          echo "After patch:"
-          ls -l dist
 
       - name: Publish to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
