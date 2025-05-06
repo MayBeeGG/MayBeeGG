@@ -23,9 +23,8 @@
 ###
 
 <div>
-  <img src="https://github-readme-stats.vercel.app/api?username=MayBeeGG&theme=dark&show_icons=true&hide_border=false&count_private=true" height="150" alt="streak graph"  />
-  <img src="https://streak-stats.demolab.com?user=MayBeeGG&locale=en&mode=daily&theme=gotham&hide_border=true&border_radius=5" height="150" alt="streak graph"  />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MayBeeGG&hide_border=true&theme=codeSTACKr&layout=compact" height="150" alt="languages graph"  >
+  <img src="https://github-readme-stats.vercel.app/api?username=MayBeeGG&theme=tokyonight&show_icons=true&hide_border=false&count_private=true" height="150" alt="streak graph"  />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MayBeeGG&theme=tokyonight&hide_border=false" height="150" alt="streak graph"  />
 </div>
 
 ###
