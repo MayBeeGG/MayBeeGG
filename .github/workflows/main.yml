@@ -55,8 +55,8 @@ EOF
             echo "ERROR: dist/snake-dark.svg was not created!"
             echo "Creating minimal fallback so deploy can proceed."
             cat <<EOF > dist/snake-dark.svg
-<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>
-EOF
+            <svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>
+            EOF
           fi
 
       - name: Debug dist directory
