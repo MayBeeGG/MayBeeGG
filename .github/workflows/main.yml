@@ -11,9 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # 1) Make sure dist exists
       - name: Setup directories
         run: mkdir -p dist
 
+      # 2) Light snake
       - name: Generate Light Snake
         uses: Platane/snk@v3
         with:
@@ -24,7 +26,17 @@ jobs:
             --color-bg d5d6db
             --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68
             --color-line d5d6db
+            --no-progress
 
+      # 3) Fallback for light
+      - name: Ensure light SVG
+        run: |
+          if [ ! -f dist/snake.svg ]; then
+            echo "ERROR: dist/snake.svg missing; creating minimal fallback"
+            echo '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > dist/snake.svg
+          fi
+
+      # 4) Dark snake
       - name: Generate Dark Snake
         uses: Platane/snk@v3
         with:
@@ -36,18 +48,21 @@ jobs:
             --color-fg a9b1d6,7aa2f7,bb9af7,9ece6a,e0af68
             --color-line 1a1b27
             --dark-mode
+            --no-progress
 
-      - name: Verify and create fallbacks
+      # 5) Fallback for dark
+      - name: Ensure dark SVG
         run: |
-          if [ ! -f dist/snake.svg ]; then
-            echo "Generating fallback light snake"
-            curl -sL https://raw.githubusercontent.com/Platane/snk/output/snake.svg > dist/snake.svg
-          fi
           if [ ! -f dist/snake-dark.svg ]; then
-            echo "Generating fallback dark snake"
-            curl -sL https://raw.githubusercontent.com/Platane/snk/output/snake-dark.svg > dist/snake-dark.svg
+            echo "ERROR: dist/snake-dark.svg missing; creating minimal fallback"
+            echo '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > dist/snake-dark.svg
           fi
 
+      # 6) Debug output (optional)
+      - name: List dist contents
+        run: ls -alh dist
+
+      # 7) Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
