@@ -18,13 +18,15 @@ jobs:
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          args: "generate --mode light --palette 414868,7aa2f7,bb9af7,9ece6a,e0af68 --output dist/snake-light.svg"
+          args: "--mode light --palette 414868,7aa2f7,bb9af7,9ece6a,e0af68"
+          outputs: dist/snake-light.svg
 
       - name: Generate Dark-mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          args: "generate --mode dark --palette 414868,7aa2f7,bb9af7,9ece6a,e0af68 --output dist/snake-dark.svg"
+          args: "--mode dark --palette 414868,7aa2f7,bb9af7,9ece6a,e0af68"
+          outputs: dist/snake-dark.svg
 
       - name: Apply Tokyo Night grid background
         run: |
