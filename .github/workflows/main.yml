@@ -18,24 +18,13 @@ jobs:
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          args: "--mode light --palette 414868,7aa2f7,bb9af7,9ece6a,e0af68"
-          outputs: dist/snake-light.svg
+          args: "--github-user-name ${{ github.repository_owner }} --output-file dist/snake-light.svg --color-bg 1a1b27 --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68"
 
       - name: Generate Dark-mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          args: "--mode dark --palette 414868,7aa2f7,bb9af7,9ece6a,e0af68"
-          outputs: dist/snake-dark.svg
-
-      - name: Apply Tokyo Night grid background
-        run: |
-          mkdir -p dist
-          BG="#1a1b27"
-          for f in dist/snake-*.svg; do
-            sed -i "s/fill=\"#ebedf0\"/fill=\"${BG}\"/g" "$f"
-            sed -i "s/fill=\"#161b22\"/fill=\"${BG}\"/g" "$f"
-          done
+          args: "--github-user-name ${{ github.repository_owner }} --output-file dist/snake-dark.svg --color-bg 1a1b27 --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68 --dark-mode"
 
       - name: Publish to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
