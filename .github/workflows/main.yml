@@ -10,27 +10,27 @@ on:
 
 jobs:
   generate:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Generate GitHub Contribution Grid Snake
+      - name: Generate Light-mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg
+          mode: light
           palette: "1a1b27,70a5fd,7aa2f7,c0caf5,a9b1d6"
+          output: dist/github-contribution-grid-snake.svg
 
+      - name: Generate Dark-mode Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          mode: dark
+          palette: "1a1b27,70a5fd,7aa2f7,c0caf5,a9b1d6"
+          output: dist/github-contribution-grid-snake-dark.svg
 
-
-      - name: Push Generated SVG to Output Branch
+      - name: Publish to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
