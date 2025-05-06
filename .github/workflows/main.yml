@@ -1,4 +1,4 @@
-name: Generate Tokyo Night Snake
+name: Tokyo Night Snake Generator
 
 on:
   schedule:
@@ -14,40 +14,43 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup directories
-        run: mkdir -p dist
+      - name: Force create dist directory
+        run: rm -rf dist && mkdir -p dist
 
       - name: Generate Light Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          output_file: dist/snake-light.svg
-          color_bg: "1a1b27"  # Tokyo Night base
-          color_fg: "414868,7aa2f7,bb9af7,9ece6a,e0af68"  # Tokyo Night palette
-          color_line: "1a1b27"  # Grid line color
+          args: |
+            --output dist/snake-light.svg 
+            --color-bg 1a1b27 
+            --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68
+            --color-line 1a1b27
 
       - name: Generate Dark Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          output_file: dist/snake-dark.svg
-          dark_mode: true
-          color_bg: "1a1b27"
-          color_fg: "414868,7aa2f7,bb9af7,9ece6a,e0af68"
-          color_line: "1a1b27"
+          args: |
+            --output dist/snake-dark.svg 
+            --color-bg 1a1b27 
+            --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68
+            --color-line 1a1b27
+            --dark-mode
 
-      - name: Verify files
+      - name: Verify SVG content
         run: |
-          ls -la dist/
-          echo "File verification complete"
+          echo "Light snake content:"
+          cat dist/snake-light.svg
+          echo "\nDark snake content:"
+          cat dist/snake-dark.svg
 
-      - name: Publish Snakes
+      - name: Force Push to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
           build_dir: dist
-          keep_files: false
+          allow_empty_commit: true
+          force_orphan: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
