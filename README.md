@@ -38,7 +38,7 @@
 ###
 
 <div align="left">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge" height="40" alt="javascript logo"  />
+  <i class="fa-brands fa-js" style="color: #FFD43B;"></i>
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" height="40" alt="python logo"  />
 </div>
 
