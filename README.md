@@ -13,9 +13,8 @@
     <img alt="views" title="GitHub profile views" src="https://komarev.com/ghpvc/?username=MayBeeGG&style=for-the-badge&color=lightgrey"/>
   </a>
 </p>
+<br/>
 
-![Snake](https://raw.githubusercontent.com/MayBeeGG/MayBeeGG/output/snake.svg)
-![Dark Snake](https://raw.githubusercontent.com/MayBeeGG/MayBeeGG/output/snake-dark.svg)
 ![snake gif](https://github.com/MayBeeGG/MayBeeGG/blob/output/github-contribution-grid-snake-dark.svg)
 
 ###
