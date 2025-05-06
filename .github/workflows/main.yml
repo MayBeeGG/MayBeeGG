@@ -14,32 +14,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create output directory
-        run: mkdir -p dist
-
       - name: Generate Light-mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           output_file: dist/snake-light.svg
-          color_bg: "1a1b27"  # Tokyo Night background
-          color_fg: "414868,7aa2f7,bb9af7,9ece6a,e0af68"  # Tokyo Night accent colors
+          color_bg: "1a1b27"
+          color_fg: "414868,7aa2f7,bb9af7,9ece6a,e0af68"
 
       - name: Generate Dark-mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           output_file: dist/snake-dark.svg
           dark_mode: true
-          color_bg: "1a1b27"  # Same background
-          color_fg: "414868,7aa2f7,bb9af7,9ece6a,e0af68"  # Same accents
+          color_bg: "1a1b27"
+          color_fg: "414868,7aa2f7,bb9af7,9ece6a,e0af68"
 
-      - name: Fix grid background colors
+      - name: Fix grid background
         run: |
-          # Fixes for grid lines that might use default colors
+          # Wait briefly to ensure files are written
+          sleep 1
+          # Apply Tokyo Night background to grid
           for f in dist/snake-*.svg; do
-            sed -i 's/fill="#ebedf0"/fill="#1a1b27"/g' "$f"  # Light mode grid
-            sed -i 's/fill="#161b22"/fill="#1a1b27"/g' "$f"  # Dark mode grid
+            [ -f "$f" ] || continue  # Handle case where no files match
+            sed -i 's/fill="%23ebedf0"/fill="%231a1b27"/g' "$f"  # URL-encoded colors
+            sed -i 's/fill="%23161b22"/fill="%231a1b27"/g' "$f"
           done
 
       - name: Publish to output branch
