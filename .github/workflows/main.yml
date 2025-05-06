@@ -11,11 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 1) Make sure dist exists
       - name: Setup directories
         run: mkdir -p dist
 
-      # 2) Light snake
       - name: Generate Light Snake
         uses: Platane/snk@v3
         with:
@@ -28,7 +26,9 @@ jobs:
             --color-line d5d6db
             --no-progress
 
-      # 3) Fallback for light
+      - name: Debug Generate Light Snake
+        run: cat dist/snake.svg || echo "dist/snake.svg not created"
+
       - name: Ensure light SVG
         run: |
           if [ ! -f dist/snake.svg ]; then
@@ -36,29 +36,6 @@ jobs:
             echo '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > dist/snake.svg
           fi
 
-      # 4) Dark snake
-      - name: Generate Dark Snake
-        uses: Platane/snk@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          args: >-
-            --output dist/snake-dark.svg
-            --color-bg 1a1b27
-            --color-fg a9b1d6,7aa2f7,bb9af7,9ece6a,e0af68
-            --color-line 1a1b27
-            --dark-mode
-            --no-progress
-
-      # 5) Fallback for dark
-      - name: Ensure dark SVG
-        run: |
-          if [ ! -f dist/snake-dark.svg ]; then
-            echo "ERROR: dist/snake-dark.svg missing; creating minimal fallback"
-            echo '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > dist/snake-dark.svg
-          fi
-
-      # 6) Debug output (optional)
       - name: List dist contents
         run: ls -alh dist
 
