@@ -14,43 +14,45 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Force create dist directory
+      - name: Clean previous files
         run: rm -rf dist && mkdir -p dist
 
-      - name: Generate Light Snake
+      - name: Generate Light Mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          args: |
-            --output dist/snake-light.svg 
-            --color-bg 1a1b27 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          args: >
+            --output dist/snake.svg
+            --color-bg 1a1b27
             --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68
             --color-line 1a1b27
 
-      - name: Generate Dark Snake
+      - name: Generate Dark Mode Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          args: |
-            --output dist/snake-dark.svg 
-            --color-bg 1a1b27 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          args: >
+            --output dist/snake-dark.svg
+            --color-bg 1a1b27
             --color-fg 414868,7aa2f7,bb9af7,9ece6a,e0af68
             --color-line 1a1b27
             --dark-mode
 
-      - name: Verify SVG content
+      - name: Verify SVG Content
         run: |
-          echo "Light snake content:"
-          cat dist/snake-light.svg
-          echo "\nDark snake content:"
+          echo "=== Light Snake Content ==="
+          cat dist/snake.svg
+          echo "\n=== Dark Snake Content ==="
           cat dist/snake-dark.svg
 
-      - name: Force Push to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
           build_dir: dist
-          allow_empty_commit: true
+          keep_files: false
           force_orphan: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
