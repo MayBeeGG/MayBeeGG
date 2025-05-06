@@ -25,7 +25,7 @@
 
 <div>
   <img src="https://github-readme-stats.vercel.app/api?username=MayBeeGG&theme=tokyonight&show_icons=true&hide_border=false&count_private=true" height="150" alt="streak graph"  />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MayBeeGG&theme=tokyonight&hide_border=false" height="150" alt="streak graph"  />
+   ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=MayBeeGG&theme=tokyonight&hide_border=false)
 </div>
 
 ### ⚙️ Tech Stack
