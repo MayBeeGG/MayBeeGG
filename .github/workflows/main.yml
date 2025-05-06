@@ -11,48 +11,41 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
       - name: Setup directories
         run: mkdir -p dist
 
-      - name: Generate Light Snake
-        uses: nberlette/sneks@latest
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          outputs: |
-            dist/github-snake.svg?color_snake=414868&color_dots=7aa2f7,bb9af7,9ece6a,e0af68,d5d6db
+      - name: Generate Snake Locally with Docker
+        run: |
+          docker run --rm -v $(pwd)/dist:/output platane/snk:v3 \
+            --github_user_name=${{ github.repository_owner }} \
+            --output=/output/snake.svg \
+            --color-bg=d5d6db \
+            --color-fg=414868,7aa2f7,bb9af7,9ece6a,e0af68 \
+            --color-line=d5d6db \
+            --no-progress
 
       - name: Verify Generated File
         run: |
-          if [ -f dist/github-snake.svg ]; then
+          if [ -f dist/snake.svg ]; then
             echo "SVG file was generated successfully!"
           else
-            echo "ERROR: github-snake.svg was not found after generation."
+            echo "ERROR: snake.svg was not found after generation."
             exit 1
           fi
 
       - name: Debug File Content
         run: |
-          if [ -f dist/github-snake.svg ]; then
-            echo "Contents of dist/github-snake.svg:"
-            cat dist/github-snake.svg
+          if [ -f dist/snake.svg ]; then
+            echo "Contents of dist/snake.svg:"
+            cat dist/snake.svg
           else
-            echo "ERROR: github-snake.svg not created"
+            echo "ERROR: dist/snake.svg not created"
           fi
 
-      - name: List dist contents
-        run: ls -alh dist
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: output
-          force_orphan: true
-          allow_empty: true
+      - name: Commit and Push Generated Snake
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add dist/snake.svg
+          git commit -m "Update GitHub commit snake visualization"
+          git push
