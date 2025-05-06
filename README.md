@@ -38,8 +38,8 @@
 ###
 
 <div align="left">
-  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" height="40" alt="Java Script"  />
-  <img src="https://img.shields.io/badge/Python-323330?style=for-the-badge&logo=python&logoColor=blue" height="40" alt="python logo"  />
+  <img src="https://img.shields.io/badge/JavaScript-1a1b27?style=for-the-badge&logo=javascript&logoColor=F7DF1E" height="40" alt="Java Script"  />
+  <img src="https://img.shields.io/badge/Python-1a1b27?style=for-the-badge&logo=python&logoColor=blue" height="40" alt="python logo"  />
 </div>
 
 ###
