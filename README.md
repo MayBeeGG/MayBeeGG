@@ -46,7 +46,7 @@
   <img src="https://img.shields.io/badge/Tailwind_CSS-1a1b27?style=for-the-badge&logo=tailwind-css&logoColor=70a5fd"/>
 </div>
 
-#### 🗃️ Databases
+#### 🗃️ Database
 <div align="left">
   <img src="https://img.shields.io/badge/MySQL-1a1b27?style=for-the-badge&logo=mysql&logoColor=70a5fd"/>
 </div>
