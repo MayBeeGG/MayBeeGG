@@ -23,6 +23,7 @@
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MayBeeGG&theme=tokyonight&show_icons=true&hide_border=false&count_private=true)
 ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=MayBeeGG&theme=tokyonight&hide_border=false)
+![THM Profile](https://tryhackme-badges.s3.amazonaws.com/SiggiBruteforce.png)
 
 
 ### ⚙️ Tech Stack
