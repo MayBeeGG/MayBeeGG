@@ -21,12 +21,15 @@
 name:       MayBee
 alias:      maybee.sh
 class:      Cyber Operator  ·  multiclass: Systems Wizard
+subclass:   Architect — draws boxes and arrows, then makes them survive restarts
 level:      root
 alignment:  Chaotic Good — red team by night, blue team by day
 homebase:   Arch Linux, a tiling WM and way too many terminals
 weapon:     NeoVim       (+3 speed, -2 to explaining how to quit)
 armour:     containers, least privilege and a healthy fear of prod
 passive:    "rm -rf" resistance — always has backups
+spells:     outbox pattern, idempotent handlers, at-least-once delivery
+curse:      cannot hear "exactly-once" without casting Counterspell
 status:     "I may be slow to respond."
 ```
 
@@ -37,6 +40,7 @@ status:     "I may be slow to respond."
 | 🧠 **INT** — Systems | `██████████▒▒` | Linux internals, systemd, services that talk to each other |
 | 👁️ **PER** — Recon | `█████████▒▒▒` | Wireshark, pcaps, logs, metrics — nothing goes unnoticed |
 | ⚡ **SPD** — Automation | `█████████▒▒▒` | Go, Rust, Python, Bash: if I do it twice, I script it |
+| 🏛️ **ARC** — System Design | `█████████▒▒▒` | event-driven services, message queues, state machines, ADRs |
 | 🥷 **STL** — Stealth | `████████▒▒▒▒` | "I may be slow to respond." |
 
 ---
@@ -68,6 +72,7 @@ status:     "I may be slow to respond."
   <img src="https://img.shields.io/badge/Linux-1a1b27?style=for-the-badge&logo=linux&logoColor=7aa2f7" />
   <img src="https://img.shields.io/badge/systemd-1a1b27?style=for-the-badge&logo=linux&logoColor=7aa2f7" />
   <img src="https://img.shields.io/badge/Docker-1a1b27?style=for-the-badge&logo=docker&logoColor=7aa2f7" />
+  <img src="https://img.shields.io/badge/NATS-1a1b27?style=for-the-badge&logo=natsdotio&logoColor=7aa2f7" />
   <img src="https://img.shields.io/badge/VMware-1a1b27?style=for-the-badge&logo=vmware&logoColor=7aa2f7" />
   <img src="https://img.shields.io/badge/Raspberry_Pi-1a1b27?style=for-the-badge&logo=raspberrypi&logoColor=7aa2f7" />
   <img src="https://img.shields.io/badge/Arduino-1a1b27?style=for-the-badge&logo=arduino&logoColor=7aa2f7" />
@@ -133,11 +138,11 @@ status:     "I may be slow to respond."
 ## 📡 Telemetry
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=MayBeeGG&theme=tokyonight&show_icons=true&hide_border=true&count_private=true&title_color=7aa2f7&icon_color=bb9af7" />
+  <img height="165" src="https://github.com/MayBeeGG/MayBeeGG/raw/output/stats.svg" alt="GitHub stats" />
   <img height="165" src="https://github-readme-streak-stats.herokuapp.com/?user=MayBeeGG&theme=tokyonight&hide_border=true" />
 </p>
 <p align="center">
-  <img src="https://tryhackme-badges.s3.amazonaws.com/maybee.sh.png" alt="TryHackMe" />
+  <a href="https://tryhackme.com/p/maybee.sh"><img width="400" src="https://github.com/MayBeeGG/MayBeeGG/raw/output/thm.png" alt="TryHackMe" /></a>
 </p>
 
 ## 🐍 Intrusion Detected in the Contribution Grid

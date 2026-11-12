@@ -32,6 +32,26 @@ jobs:
           color_snake: "414868"  # Adjust the snake color
           color_dots: "7aa2f7,bb9af7,9ece6a,e0af68,d5d6db"  # Adjust contribution dot colors
           
+      # the public github-readme-stats server is paused, so the card is built here
+      - name: generate stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&theme=tokyonight&show_icons=true&hide_border=true&count_private=true&title_color=7aa2f7&icon_color=bb9af7
+          path: dist/stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # GitHub strips the TryHackMe script/iframe badge, so render it to a PNG.
+      # Falls back to the last good image, then to the old static badge.
+      - name: render TryHackMe badge
+        run: |
+          curl -sfL -o dist/thm.png https://github.com/${{ github.repository }}/raw/output/thm.png \
+            || curl -sfL -o dist/thm.png https://tryhackme-badges.s3.amazonaws.com/maybee.sh.png || true
+          timeout 60 google-chrome --headless=new --disable-gpu --hide-scrollbars \
+            --window-size=400,172 --virtual-time-budget=15000 --screenshot=/tmp/thm.png \
+            "https://tryhackme.com/badge/t/656780efde1fcf4ae571d1b9aae8235bd9293bfe56205bcc18d6bd9c817daee4ed44fb24592f695abc82e32152b98137/embed?theme=dark" \
+            && [ "$(stat -c%s /tmp/thm.png)" -gt 10000 ] && cp /tmp/thm.png dist/thm.png || echo "badge render failed, keeping previous image"
+
       # push the content of <build_dir> to a branch
       # the content will be available at https://raw.githubusercontent.com/<github_user>/<repository>/<target_branch>/<file> , or as github page
       - name: push github-contribution-grid-snake.svg to the output branch
